@@ -39,6 +39,7 @@ export default function Projects() {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '600px',
+          maxWidth: '100vw',
           height: '600px',
           borderRadius: '50%',
           background:

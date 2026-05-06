@@ -36,11 +36,16 @@ export default function Navbar() {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
     setIsMobileMenuOpen(false);
+    
+    // Defer the scroll slightly to allow the mobile menu's collapse animation 
+    // to start. Otherwise, the DOM height shift interrupts the native smooth scroll.
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 150);
   };
 
   return (
@@ -48,17 +53,17 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 w-full"
       style={{
-        width: '100vw',
-        maxWidth: '100vw',
         background: isScrolled
           ? 'rgba(2, 6, 23, 0.85)'
           : 'transparent',
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
         borderBottom: isScrolled
           ? '1px solid rgba(13, 148, 136, 0.2)'
           : '1px solid transparent',
+        transition: 'background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease',
       }}
     >
       <div
