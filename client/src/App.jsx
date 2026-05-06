@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', width: '100%', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
       <main style={{ flex: 1 }}>
         <Hero />

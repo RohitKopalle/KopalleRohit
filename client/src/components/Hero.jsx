@@ -2,12 +2,14 @@ import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowDown, HiDocumentDownload } from 'react-icons/hi';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { useShowGlobe } from '../hooks/useShowGlobe';
 import Loader from './Loader';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
 export default function Hero() {
   const isMobile = useIsMobile();
+  const showGlobe = useShowGlobe(1024);
 
   const handleScrollToProjects = (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ export default function Hero() {
       id="home"
       style={{
         minHeight: '100vh',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -39,18 +42,24 @@ export default function Hero() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1fr',
-          gap: '2rem',
+          gridTemplateColumns: showGlobe ? '1.2fr 1fr' : '1fr',
+          gap: showGlobe ? '2rem' : '0',
           alignItems: 'center',
           width: '100%',
-          maxWidth: '1280px',
+          maxWidth: showGlobe ? '1280px' : '800px',
           margin: '0 auto',
           padding: isMobile ? '6rem 1.5rem 3rem' : '0 2rem',
           zIndex: 1,
         }}
       >
-        {/* Left: Text Content */}
-        <div>
+        {/* Text Content */}
+        <div
+          style={{
+            textAlign: showGlobe ? 'left' : 'center',
+            maxWidth: showGlobe ? 'none' : '600px',
+            margin: showGlobe ? '0' : '0 auto',
+          }}
+        >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,8 +111,10 @@ export default function Hero() {
               color: 'var(--color-text-secondary)',
               fontSize: isMobile ? '1rem' : '1.15rem',
               lineHeight: 1.7,
-              maxWidth: '460px',
+              maxWidth: showGlobe ? '460px' : '540px',
               marginBottom: '2rem',
+              marginLeft: showGlobe ? '0' : 'auto',
+              marginRight: showGlobe ? '0' : 'auto',
             }}
           >
             I work on solving complex problems and building efficient, scalable
@@ -118,6 +129,7 @@ export default function Hero() {
               display: 'flex',
               gap: '1rem',
               flexWrap: 'wrap',
+              justifyContent: showGlobe ? 'flex-start' : 'center',
             }}
           >
             <a
@@ -138,23 +150,23 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: 3D Globe */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          style={{
-            width: '100%',
-            height: isMobile ? '300px' : '520px',
-            minHeight: isMobile ? '300px' : '520px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-          }}
-        >
-          {/* Subtle radial glow behind the globe */}
-          {!isMobile && (
+        {/* 3D Globe - Only shown on large screens */}
+        {showGlobe && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            style={{
+              width: '100%',
+              height: '520px',
+              minHeight: '520px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+            }}
+          >
+            {/* Subtle radial glow behind the globe */}
             <div
               style={{
                 position: 'absolute',
@@ -169,11 +181,11 @@ export default function Hero() {
                 filter: 'blur(30px)',
               }}
             />
-          )}
-          <Suspense fallback={<Loader />}>
-            <HeroScene isMobile={isMobile} />
-          </Suspense>
-        </motion.div>
+            <Suspense fallback={<Loader />}>
+              <HeroScene />
+            </Suspense>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import Globe from './Globe';
 
 /**
  * HeroScene — wraps the 3D globe in a Canvas with proper lighting.
- * Falls back to a stylish animated CSS orb on mobile for performance.
+ * Only rendered on large screens (1024px+) via parent component logic.
  */
 
 function Lights() {
@@ -17,27 +17,7 @@ function Lights() {
   );
 }
 
-export default function HeroScene({ isMobile }) {
-  /* ── Mobile: lightweight CSS fallback ── */
-  if (isMobile) {
-    return (
-      <div
-        style={{
-          width: '180px',
-          height: '180px',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle at 35% 35%, rgba(45, 212, 191, 0.18) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%)',
-          border: '1px solid rgba(45, 212, 191, 0.12)',
-          boxShadow: '0 0 60px rgba(13, 148, 136, 0.08)',
-          animation: 'float 6s ease-in-out infinite',
-          margin: '0 auto',
-        }}
-      />
-    );
-  }
-
-  /* ── Desktop: R3F Canvas with Globe ── */
+export default function HeroScene() {
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 40 }}

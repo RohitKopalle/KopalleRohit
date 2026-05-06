@@ -84,10 +84,10 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="glass-card" style={{ padding: '2rem' }}>
             <div style={{ marginBottom: '1rem' }}>
-              <input type="text" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required style={inputStyle} onFocus={(e) => { e.target.style.borderColor = '#2563EB'; }} onBlur={(e) => { e.target.style.borderColor = '#1e293b'; }} />
+              <input type="text" name="name" autoComplete="name" placeholder="Your Name" value={form.name} onChange={handleChange} required style={inputStyle} onFocus={(e) => { e.target.style.borderColor = '#2563EB'; }} onBlur={(e) => { e.target.style.borderColor = '#1e293b'; }} />
             </div>
             <div style={{ marginBottom: '1rem' }}>
-              <input type="email" name="email" placeholder="Your Email" value={form.email} onChange={handleChange} required style={inputStyle} onFocus={(e) => { e.target.style.borderColor = '#2563EB'; }} onBlur={(e) => { e.target.style.borderColor = '#1e293b'; }} />
+              <input type="email" name="email" autoComplete="email" placeholder="Your Email" value={form.email} onChange={handleChange} required style={inputStyle} onFocus={(e) => { e.target.style.borderColor = '#2563EB'; }} onBlur={(e) => { e.target.style.borderColor = '#1e293b'; }} />
             </div>
             <div style={{ marginBottom: '1.25rem' }}>
               <textarea name="message" placeholder="Your Message" value={form.message} onChange={handleChange} required rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }} onFocus={(e) => { e.target.style.borderColor = '#2563EB'; }} onBlur={(e) => { e.target.style.borderColor = '#1e293b'; }} />

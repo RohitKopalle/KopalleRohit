@@ -50,6 +50,8 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
+        width: '100vw',
+        maxWidth: '100vw',
         background: isScrolled
           ? 'rgba(2, 6, 23, 0.85)'
           : 'transparent',
@@ -59,7 +61,13 @@ export default function Navbar() {
           : '1px solid transparent',
       }}
     >
-      <div className="py-5 flex items-center justify-between" style={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+      <div
+        className="py-5 flex items-center justify-between w-full"
+        style={{
+          paddingLeft: 'clamp(1rem, 4vw, 3rem)',
+          paddingRight: 'clamp(1rem, 4vw, 3rem)',
+        }}
+      >
         {/* Logo */}
         <a
           href="#home"
@@ -111,8 +119,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl bg-transparent border-none cursor-pointer"
-          style={{ color: 'var(--color-text-primary)' }}
+          className="mobile-menu-btn"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >

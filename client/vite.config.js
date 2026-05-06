@@ -12,4 +12,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1600, // Three.js and related libraries are large
+  },
 });
