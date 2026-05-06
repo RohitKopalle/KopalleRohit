@@ -19,6 +19,7 @@ import {
   SiGithub,
   SiRender,
   SiVercel,
+  SiMongodb,
 } from 'react-icons/si';
 import { TbApi, TbLetterC } from 'react-icons/tb';
 
@@ -40,6 +41,7 @@ const categories = [
     { name: 'Chart.js', icon: SiChartdotjs, color: '#FF6384' },
   ]},
   { title: 'Backend & Database', skills: [
+    { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
     { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
     { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
     { name: 'Supabase', icon: SiSupabase, color: '#3ECF8E' },
