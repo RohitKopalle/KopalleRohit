@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-merged",
+  "version": "1.0.0",
+  "description": "Full-stack portfolio with Next.js frontend and Express backend",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
