@@ -97,9 +97,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="mx-auto mt-6 max-w-2xl text-pretty text-base sm:text-lg text-muted-foreground leading-relaxed"
         >
-          I solve hard problems with data structures, algorithms, and clean
-          system design — engineering software that is correct, efficient, and
-          built to scale.
+          I work on solving complex problems and building efficient, scalable software systems, with a focus on performance and clean design.
         </motion.p>
 
         <motion.div
