@@ -26,8 +26,14 @@ const seedProjects = [
     techStack: ['Next.js','Next.js Route Handlers', 'Supabase', 'Featherless AI', 'Mistral-Nemo', 'Qwen2.5', 'Bright Data'],
     githubUrl: 'https://github.com/RohitKopalle/ConclaveAI',
     liveUrl: 'https://conclave-ai-xais.vercel.app/',
+  },
+  {
+    name: 'CrimeGraph',
+    description: 'An AI-powered criminal network analysis platform featuring automated link discovery, Modus Operandi (MO) role attribution, network disruption simulations, and legally compliant dossier generation for investigative agencies.',
+    techStack: ['Next.js', 'FastAPI', 'PostgreSQL', 'Neo4j', 'Cytoscape.js', 'Tailwind CSS', 'Vercel', 'Render'],
+    githubUrl: '',
+    liveUrl: 'https://byte-force-c9pl.vercel.app/',
   }
-
 ];
 
 const seed = async () => {
